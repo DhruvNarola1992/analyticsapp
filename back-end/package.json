@@ -1,0 +1,24 @@
+{
+    "name": "click",
+    "scripts": {
+        "start": "node app.js",
+        "debug": "node --inspect app.js"
+    },
+    "dependencies": {
+        "body-parser": "1.19.0",
+        "compression": "1.7.4",
+        "connect-multiparty": "2.2.0",
+        "cors": "2.8.5",
+        "cron": "1.8.2",
+        "crypto": "1.0.1",
+        "express": "4.17.1",
+        "firebase-admin": "8.12.1",
+        "hashids": "2.2.1",
+        "helmet": "3.22.0",
+        "json2csv": "5.0.1",
+        "moment": "2.26.0",
+        "mongoose": "5.9.18",
+        "multipart": "0.1.5",
+        "nodemailer": "^6.4.10"
+    }
+}
