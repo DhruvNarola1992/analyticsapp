@@ -1,0 +1,125 @@
+<div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px">
+
+    <h4 mat-dialog-title> App Wise Activity </h4>
+    <mat-dialog-content class="">
+        <div class="example-container">
+            <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+                <!-- Index -->
+                <!-- <ng-container matColumnDef="index">
+                    <th mat-header-cell *matHeaderCellDef> Index </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        {{(i+1) + (pageIndexWithdraw * pageSizeWithdraw)}} </td>
+                </ng-container> -->
+
+                <!-- Icon -->
+                <ng-container matColumnDef="icon">
+                    <th mat-header-cell *matHeaderCellDef> Icon </th>
+                    <td mat-cell *matCellDef="let element">
+                        <a fxFlexFill [href]="element.icon" target="_blank">
+                            <img [src]="element.icon" style="height: 30px; width: 30px;">
+                        </a>
+                    </td>
+                </ng-container>
+
+                <!-- Sku Name -->
+                <ng-container matColumnDef="uan">
+                    <th mat-header-cell *matHeaderCellDef> Skuname </th>
+                    <td mat-cell *matCellDef="let element"> {{element.uan}} </td>
+                </ng-container>
+
+                <!-- Coin -->
+                <ng-container matColumnDef="coin">
+                    <th mat-header-cell *matHeaderCellDef> Coin </th>
+                    <td mat-cell *matCellDef="let element"> {{element.coin}} </td>
+                </ng-container>
+
+                <!-- Total Coin -->
+                <ng-container matColumnDef="totalcoin">
+                    <th mat-header-cell *matHeaderCellDef> Total Coin </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalcoin}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expandedDetail">
+                    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                        <div class="example-element-detail"
+                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="example-element-diagram">
+                                <div class="example-element-symbol">Impression </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Total </span> :
+                                    {{element.totalimpression}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Success </span> :
+                                    {{element.successimpression}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Fail </span> :
+                                    {{element.failimpression}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Coin </span> :
+                                    {{element.coinimpression}} </div>
+                            </div>
+                            <div class="example-element-diagram">
+                                <div class="example-element-symbol">Click </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Total </span> :
+                                    {{element.totalclick}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Success </span> :
+                                    {{element.successclick}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Fail </span> :
+                                    {{element.failclick}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Coin </span> :
+                                    {{element.coinclick}} </div>
+                            </div>
+                            <div class="example-element-diagram">
+                                <div class="example-element-symbol">Spin </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Count </span> :
+                                    {{element.spincount}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Coin </span> :
+                                    {{element.coinspin}} </div>
+                            </div>
+                            <div class="example-element-diagram">
+                                <div class="example-element-symbol">Scratch </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Count </span> :
+                                    {{element.scratchcount}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Coin </span> :
+                                    {{element.coinscratch}} </div>
+                            </div>
+                            <div class="example-element-diagram">
+                                <div class="example-element-symbol">Game </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Count </span> :
+                                    {{element.gamecount}} </div>
+                                <div class="example-element-name"> <span
+                                        class="example-element-description-attribution"> Coin </span> :
+                                    {{element.coinplaygame}} </div>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+                    [class.example-expanded-row]="expandedElement === element"
+                    (click)="expandedElement = expandedElement === element ? null : element">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"></tr>
+            </table>
+            <mat-paginator [length]="lengthWithdraw" [pageIndex]="pageIndexWithdraw" [pageSize]="pageSizeWithdraw"
+                [pageSizeOptions]="[10,20,50]" (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button type="button" color="warn" (click)="dialogRef.close()">
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-dialog-actions>
+
+</div>

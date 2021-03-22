@@ -1,0 +1,55 @@
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Mobile Number">
+      <span matPrefix><mat-icon>search</mat-icon></span>
+    </mat-form-field>
+    <table mat-table matSort (matSortChange)="sortWithdraw($event)" matSortActive="createDate" matSortDirection="desc"
+      [dataSource]="dataSource" class="w-100">
+  
+      <!-- Index -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> Index </th>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{(i+1) + (pageIndex * pageSize)}} </td>
+      </ng-container>
+  
+      <!-- Mobile No -->
+      <ng-container matColumnDef="mobileNo">
+        <th mat-header-cell *matHeaderCellDef> Mobile No </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+      </ng-container>
+  
+      <!-- Name -->
+      <ng-container matColumnDef="query">
+        <th mat-header-cell *matHeaderCellDef> Query </th>
+        <td mat-cell *matCellDef="let element"> {{element.query}} </td>
+      </ng-container>
+  
+      <!-- Date -->
+      <ng-container matColumnDef="createDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="createDate"> Create Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.createDate | date: 'd-MM-yy'}} </td>
+      </ng-container>
+  
+      <!-- Time -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.createDate | date: 'shortTime'}} </td>
+      </ng-container>
+  
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button color="accent" (click)="supportDelete(row,i)">
+            <mat-icon>delete</mat-icon>
+          </button>  
+        </td>
+      </ng-container>
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]"
+      (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+  </section>

@@ -1,0 +1,27 @@
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch">
+  <mat-card fxFlex.gt-xs="40" class="mb15">
+    <mat-card-header>
+      <mat-card-title>New Keyword</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Sequence Number" type="text"  [(ngModel)]="seq">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Keyword" type="text" [(ngModel)]="keyword">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Value" type="text" [(ngModel)]="value">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Desc" type="text" [(ngModel)]="desc">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="w-100" (click)="onNewKeyword()">INSERT</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

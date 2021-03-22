@@ -1,0 +1,25 @@
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch">
+  <form [formGroup]="form" fxFlex.gt-xs="40" class="mb15" (ngSubmit)="submitNotification()">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>New Notification</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="">
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Title" type="text" formControlName="title">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Text" type="text" formControlName="text">
+          </mat-form-field>
+          <!-- <mat-form-field>  -->
+              <input type="file" #fileUploader (change)="uploadFile($event)" mat-raised-button color="accent">
+          <!-- </mat-form-field> -->
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" class="w-100" type="submit">INSERT</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

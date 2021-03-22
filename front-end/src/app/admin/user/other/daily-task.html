@@ -1,0 +1,58 @@
+<div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px">
+
+    <h4 mat-dialog-title> Task & Spin Assign Data </h4>
+    <mat-dialog-content class="">
+        <div class="example-container">
+            <table mat-table [dataSource]="dataSource" class="w-100">
+
+                <!-- Index -->
+                <ng-container matColumnDef="index">
+                    <th mat-header-cell *matHeaderCellDef> Index </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        {{(i+1) + (pageIndexWithdraw * pageSizeWithdraw)}} </td>
+                </ng-container>
+
+                <!-- Sku Name -->
+                <ng-container matColumnDef="uan">
+                    <th mat-header-cell *matHeaderCellDef> Skuname </th>
+                    <td mat-cell *matCellDef="let element"> {{element.uan}} </td>
+                </ng-container>
+
+                <!-- Task -->
+                <ng-container matColumnDef="task">
+                    <th mat-header-cell *matHeaderCellDef> Task </th>
+                    <td mat-cell *matCellDef="let element"> {{element.task}} </td>
+                </ng-container>
+
+                <!-- Current Task -->
+                <ng-container matColumnDef="currenttask">
+                    <th mat-header-cell *matHeaderCellDef> Current Task </th>
+                    <td mat-cell *matCellDef="let element"> {{element.currenttask}} </td>
+                </ng-container>
+
+                <!-- Spin -->
+                <ng-container matColumnDef="spin">
+                    <th mat-header-cell *matHeaderCellDef> Spin </th>
+                    <td mat-cell *matCellDef="let element"> {{element.spin}} </td>
+                </ng-container>
+
+                <!-- Current Spin -->
+                <ng-container matColumnDef="currentspin">
+                    <th mat-header-cell *matHeaderCellDef> Current Spin </th>
+                    <td mat-cell *matCellDef="let element"> {{element.currentspin}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [length]="lengthWithdraw" [pageIndex]="pageIndexWithdraw" [pageSize]="pageSizeWithdraw"
+                [pageSizeOptions]="[10,20,50]" (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button type="button" color="warn" (click)="dialogRef.close()">
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-dialog-actions>
+
+</div>

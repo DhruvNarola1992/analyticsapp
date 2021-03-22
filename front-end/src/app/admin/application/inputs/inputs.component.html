@@ -1,0 +1,99 @@
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+  <table mat-table [dataSource]="dataSource" class="w-100">
+    <!-- Icon Column -->
+    <ng-container matColumnDef="icon">
+      <th mat-header-cell *matHeaderCellDef> Icon </th>
+      <td mat-cell *matCellDef="let element">
+        <a fxFlexFill [href]="element.url" target="_blank">
+          <img [src]="element.icon" style="height: 30px; width: 30px;">
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Total assigin Task -->
+    <ng-container matColumnDef="totalassigntask">
+      <th mat-header-cell *matHeaderCellDef> Assign Task </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalassigntask}}
+      </td>
+    </ng-container>
+
+    <!-- Total assigin Click -->
+    <ng-container matColumnDef="totalassignclick">
+      <th mat-header-cell *matHeaderCellDef> Assign Click </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalassignclick}}
+      </td>
+    </ng-container>
+
+     <!-- Today assigin Task -->
+     <ng-container matColumnDef="todayassigntask">
+      <th mat-header-cell *matHeaderCellDef> Today Task </th>
+      <td mat-cell *matCellDef="let element"> {{element.todayassigntask}}
+      </td>
+    </ng-container>
+
+    <!-- Today assigin Click -->
+    <ng-container matColumnDef="todayassignclick">
+      <th mat-header-cell *matHeaderCellDef> Today Click </th>
+      <td mat-cell *matCellDef="let element"> {{element.todayassignclick}}
+      </td>
+    </ng-container>
+
+    <!-- Current percentage -->
+    <ng-container matColumnDef="currentpercentage">
+      <th mat-header-cell *matHeaderCellDef> C% </th>
+      <td mat-cell *matCellDef="let element"> {{ ((element.todayassignclick * 100) / element.todayassigntask) | number}}
+      </td>
+    </ng-container>
+
+    <!-- Task Click Percentage -->
+    <ng-container matColumnDef="taskclickpercentage">
+      <th mat-header-cell *matHeaderCellDef> R% </th>
+      <td mat-cell *matCellDef="let element"> {{element.taskclickpercentage}} </td>
+    </ng-container>
+
+    <!-- Date -->
+    <ng-container matColumnDef="createDate">
+      <th mat-header-cell *matHeaderCellDef> Create Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.createDate | date: 'd-MM-yy'}} </td>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> </th>
+
+      <td mat-cell *matCellDef="let row; let i=index;">
+
+        <button mat-icon-button color="warn" *ngIf= "row.isBeta == true">
+          <mat-icon>thumb_down_alt</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" *ngIf= "row.isBeta == false">
+          <mat-icon>android</mat-icon>
+        </button>
+       
+
+        <button mat-icon-button color="primary" *ngIf= "row.isActive == true">
+          <mat-icon>thumb_up_alt</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" *ngIf= "row.isActive == false">
+          <mat-icon>app_blocking</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="showApplication(row,i)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>

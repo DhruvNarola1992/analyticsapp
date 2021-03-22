@@ -1,0 +1,40 @@
+<div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px">
+    <form [formGroup]="form" (ngSubmit)="updateTask(form)" fxFlex.gt-xs="100" class="mb15">
+        <h4 mat-dialog-title> Update Task </h4>
+        <mat-dialog-content class="">
+            <div class="example-container">
+                <mat-form-field>
+                    <input matInput placeholder="Task Click and Impression" type="text" formControlName="task">
+                </mat-form-field> <br />
+                <mat-form-field>
+                    <input matInput placeholder="Spin" type="number" class="example-right-align" formControlName="spin">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Max Click" type="number" class="example-right-align"
+                    formControlName = "maxclick">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Min Second Per Click" type="number" class="example-right-align"
+                    formControlName ="mintimeclick">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Max Second Per Click" type="number" class="example-right-align"
+                    formControlName="maxtimeclick">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Click Timer" type="number" class="example-right-align"
+                    formControlName="clicktimer">
+                </mat-form-field>
+                <mat-checkbox formControlName="isClick" (change)="onChange($event)">Click Present or not!</mat-checkbox>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-raised-button color="accent" type="submit">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-raised-button type="button" color="warn" (click)="dialogRef.close()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

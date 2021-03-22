@@ -1,0 +1,36 @@
+<!-- <div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px"> -->
+
+<div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px">
+    <form [formGroup]="form" (ngSubmit)="submit(form)" fxFlex.gt-xs="100" class="mb15">
+        <h4 mat-dialog-title> {{data.uan}} </h4>
+        <mat-dialog-content class="">
+            <div class="example-container">
+                <mat-form-field>
+                    <input matInput formControlName="name" type="text" placeholder="Name">
+                </mat-form-field> <br />
+                <mat-form-field>
+                    <input matInput formControlName="icon" type="text" placeholder="Icon">
+                </mat-form-field> <br />
+                <mat-form-field>
+                    <input matInput formControlName="url" type="text" placeholder="Url">
+                </mat-form-field> <br />
+                <mat-form-field>
+                    <textarea matInput formControlName="msg" type="text" placeholder="Msg"></textarea>
+                </mat-form-field> <br />
+                <mat-form-field>
+                    <input matInput type="text" class="example-right-align" placeholder="Click Percentage" formControlName="taskclickpercentage">
+                </mat-form-field> <br />
+                <mat-checkbox formControlName="isActive" (change)="onChange($event)">Live or not!</mat-checkbox><br />
+                <mat-checkbox formControlName="isBeta" (change)="onChangeBeta($event)">Beta Application!</mat-checkbox>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-raised-button color="accent" type="submit">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-raised-button type="button" color="warn" (click)="dialogRef.close()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch">
+  <mat-card fxFlex.gt-xs="40" class="mb15">
+    <mat-card-header>
+      <mat-card-title>New Application</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Unique Application Name" type="text"  [(ngModel)]="uan">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Application Name" type="text" [(ngModel)]="name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Application Icon" type="text" [(ngModel)]="icon">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Application Url" type="text" [(ngModel)]="url">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Message" type="text" [(ngModel)]="msg"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Click Percentage" type="number" class="example-right-align" [(ngModel)]="taskclickpercentage">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="w-100" (click)="onNewApplication()">INSERT</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

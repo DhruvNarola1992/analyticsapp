@@ -1,0 +1,55 @@
+<div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px">
+
+        <h4 mat-dialog-title> Scratch Assign Data </h4>
+        <mat-dialog-content class="">
+            <div class="example-container">
+                <table mat-table [dataSource]="dataSource" class="w-100">
+    
+                    <!-- Index -->
+                    <ng-container matColumnDef="index">
+                        <th mat-header-cell *matHeaderCellDef> Index </th>
+                        <td mat-cell *matCellDef="let element; let i = index;"> {{(i+1) + (pageIndexWithdraw * pageSizeWithdraw)}} </td>
+                    </ng-container>
+    
+                    <!-- Sku Name -->
+                    <ng-container matColumnDef="uan">
+                        <th mat-header-cell *matHeaderCellDef> Skuname </th>
+                        <td mat-cell *matCellDef="let element"> {{element.uan}} </td>
+                    </ng-container>
+    
+                    <!-- Scratch Image -->
+                    <ng-container matColumnDef="scratchimage">
+                            <th mat-header-cell *matHeaderCellDef> Icon </th>
+                            <td mat-cell *matCellDef="let element">
+                              <a fxFlexFill [href]="element.scratchimage" target="_blank">
+                                <img [src]="element.scratchimage" style="height: 30px; width: 30px;">
+                              </a>
+                            </td>
+                    </ng-container>
+
+                    <!-- Total Card -->
+                    <ng-container matColumnDef="totalCard">
+                        <th mat-header-cell *matHeaderCellDef> Total Card </th>
+                        <td mat-cell *matCellDef="let element"> {{element.totalCard | number}} </td>
+                    </ng-container>
+
+                     <!-- Current Card -->
+                    <ng-container matColumnDef="currentCard">
+                        <th mat-header-cell *matHeaderCellDef> Current Card </th>
+                        <td mat-cell *matCellDef="let element"> {{element.currentCard | number}} </td>
+                    </ng-container>
+    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [length]="lengthWithdraw" [pageIndex]="pageIndexWithdraw" [pageSize]="pageSizeWithdraw" [pageSizeOptions]="[10,20,50]"
+                    (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-raised-button type="button" color="warn" (click)="dialogRef.close()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    
+    </div>

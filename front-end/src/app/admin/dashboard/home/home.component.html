@@ -1,0 +1,94 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'warn'" [icon]="'view_list'" [count]="report?.totalimpression | number" [label]="'Total Impression!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="report?.successimpression | number" [label]="'Success Impression!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'danger'" [icon]="'bookmarks'" [count]="report?.failimpression | number" [label]="'Fail Impression!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="report?.coinimpression | number" [label]="'Impression Coins!'"></app-stat>
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'warn'" [icon]="'view_list'" [count]="report?.totalclick | number" [label]="'Total Click!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="report?.successclick | number" [label]="'Success Click!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'danger'" [icon]="'bookmarks'" [count]="report?.failclick | number" [label]="'Fail Click!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="report?.coinclick | number" [label]="'Click Coins!'"></app-stat>
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'bookmarks'" [count]="report?.gamecount | number" [label]="'Total Play Game!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'view_list'" [count]="report?.coinplaygame | number" [label]="'Play Coins!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'accent'" [icon]="'delete'" [count]="report?.withdrawcoin | number" [label]="'Nothing!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'shopping_cart'" [count]="report?.coinreference | number" [label]="'Refer Coins!'"></app-stat>
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'bookmarks'" [count]="report?.scratchcount | number" [label]="'Total Scratch!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'view_list'" [count]="report?.coinscratch | number" [label]="'Scratch Coins!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="report?.spincount | number" [label]="'Spin Count!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="report?.coinspin | number" [label]="'Spin Coins!'"></app-stat>
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'warn'" [icon]="'shopping_cart'" [count]="report?.todayregister | number" [label]="'Total Register!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'success'" [icon]="'contact_support'" [count]="report?.todaylogin | number" [label]="'Total Login!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'warn'" [icon]="'bookmarks'" [count]="report?.todayassigntask | number" [label]="'Total Task!'"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'danger'" [icon]="'view_list'" [count]="report?.todayassignclick | number" [label]="'Click Task!'"></app-stat>
+  </div>
+ 
+</div>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49" *ngIf="withdraw != undefined">
+    <app-stat [bgClass]="'warn'" [icon]="'bookmarks'"  [count]="withdraw[0]?.coin | number" [amount]= "withdraw[0]?.amount | number" [label]="withdraw[0]?._id"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49" *ngIf="withdraw != undefined">
+    <app-stat [bgClass]="'success'" [icon]="'view_list'"  [count]="withdraw[1]?.coin | number" [amount]= "withdraw[1]?.amount | number" [label]="withdraw[1]?._id"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49" *ngIf="withdraw != undefined">
+    <app-stat [bgClass]="'danger'" [icon]="'shopping_cart'"   [count]="withdraw[2]?.coin | number" [amount]= "withdraw[2]?.amount | number" [label]="withdraw[2]?._id"></app-stat>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-stat [bgClass]="'info'" [icon]="'payment'" [count]="report?.withdrawcoin | number" [amount]= "report?.withdrawamount | number" [label]="'Total Withdraw Coin!'"></app-stat>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,60 @@
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+  <mat-form-field>
+      <input type="text" placeholder="Select Application" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='changeApplication($event.option.value)'>
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.uan}}
+        </mat-option>
+      </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="firstpicker" placeholder="Choose a first date" [formControl]="fromdate">
+    <mat-datepicker-toggle matSuffix [for]="firstpicker"></mat-datepicker-toggle>
+    <mat-datepicker #firstpicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="secondpicker" placeholder="Choose a second date" [formControl]="todate">
+    <mat-datepicker-toggle matSuffix [for]="secondpicker"></mat-datepicker-toggle>
+    <mat-datepicker #secondpicker></mat-datepicker>
+  </mat-form-field>
+  <button mat-button color="primary" (click)="initReportApplication()">View</button>
+  <table mat-table [dataSource]="dataSource" class="w-100">
+
+    <!-- Index -->
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef> Index </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> {{(i+1) + (pageIndex * pageSize)}} </td>
+    </ng-container>
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element._id | date: 'd-MM-yy'}} </td>
+    </ng-container>
+
+    <!-- Total Coin -->
+    <ng-container matColumnDef="earn">
+      <th mat-header-cell *matHeaderCellDef> Earn </th>
+      <td mat-cell *matCellDef="let element">
+        {{ (element.coinimpression + element.coinclick + element.coinscratch + element.coinspin + element.coinplaygame) | number}}
+      </td>
+    </ng-container>
+
+    <!-- Assign Task -->
+    <ng-container matColumnDef="todayassigntask">
+      <th mat-header-cell *matHeaderCellDef> Assign Task </th>
+      <td mat-cell *matCellDef="let element"> {{element.todayassigntask}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="todayassignclick">
+        <th mat-header-cell *matHeaderCellDef> Assign Click </th>
+        <td mat-cell *matCellDef="let element"> {{element.todayassignclick}} </td>
+      </ng-container>
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]"
+    (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+</section>

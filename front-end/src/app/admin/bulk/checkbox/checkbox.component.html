@@ -1,0 +1,8 @@
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+  <mat-form-field>
+    <input matInput [matDatepicker]="firstpicker" placeholder="Choose a date" [formControl]="fromdate">
+    <mat-datepicker-toggle matSuffix [for]="firstpicker"></mat-datepicker-toggle>
+    <mat-datepicker #firstpicker></mat-datepicker>
+  </mat-form-field>
+  <button mat-button color="danger" (click)="viewData()">View</button>
+</section>

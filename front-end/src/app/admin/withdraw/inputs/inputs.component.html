@@ -1,0 +1,126 @@
+<section id="sample-table" class="mat-elevation-z8 bg-white">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Mobile Number">
+    <span matPrefix><mat-icon>search</mat-icon></span>
+  </mat-form-field>
+  <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]"
+    (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+  <table mat-table matSort (matSortChange)="sortWithdraw($event)" matSortActive="createDate" matSortDirection="desc"
+    [dataSource]="dataSource" class="w-100">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(element) : null"
+          [checked]="selection.isSelected(element)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Index -->
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef> Index </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> {{(i+1) + (pageIndex * pageSize)}} </td>
+    </ng-container>
+
+    <!-- Mobile No -->
+    <ng-container matColumnDef="mobileNo">
+      <th mat-header-cell *matHeaderCellDef> Mobile No </th>
+      <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+    </ng-container>
+
+    <!-- Coin -->
+    <ng-container matColumnDef="coin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="coin"> Coin </th>
+      <td mat-cell *matCellDef="let element"> {{element.coin}} </td>
+    </ng-container>
+
+    <!-- Amount -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+    </ng-container>
+
+    <!-- name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Date -->
+    <ng-container matColumnDef="createDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="createDate"> Create Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.createDate | date: 'd-MM-yy'}} </td>
+    </ng-container>
+
+    <!-- Time -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.createDate | date: 'shortTime'}} </td>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="userBulkDeactive()">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" (click)="userBulkWithdraw()">
+          <mat-icon>done_all</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" (click)="downloadBulkWithdraw()">
+          <!-- <a [href]="fileUrl" download="withdraw.csv"> -->
+            <mat-icon>cloud_download</mat-icon>
+          <!-- </a> -->
+        </button>
+      </th>
+
+      <td mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" *ngIf="row.isActive == true" (click)="userActive(row,i)">
+          <mat-icon>thumb_up_alt</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" *ngIf="row.isActive == false" (click)="userActive(row,i)">
+          <mat-icon>thumb_down_alt</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="userPayment(row)">
+          <mat-icon>payment</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="userActivity(row)">
+          <mat-icon>notes</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="userActivityByApps(row)">
+          <mat-icon>event_note</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="userScratch(row)">
+            <mat-icon>image</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="userTaskSpin(row)">
+            <mat-icon>lens</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="userApplication(row)">
+          <mat-icon>android</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="userMoredetail(row)">
+            <mat-icon>more</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[10,20,50]"
+    (page)="getServerData($event)" showFirstLastButtons></mat-paginator>
+</section>

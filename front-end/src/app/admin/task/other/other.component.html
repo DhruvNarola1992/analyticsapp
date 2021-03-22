@@ -1,0 +1,36 @@
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch">
+  <mat-card fxFlex.gt-xs="40" class="mb15">
+    <mat-card-header>
+      <mat-card-title>New Task</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Task Click and Impression" type="text"  [(ngModel)]="task">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Spin" type="number" class="example-right-align" [(ngModel)]="spin">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Max Click" type="number" class="example-right-align" [(ngModel)]="maxclick">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Min Second Per Click" type="number" class="example-right-align" [(ngModel)]="mintimeclick">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Max Second Per Click" type="number" class="example-right-align" [(ngModel)]="maxtimeclick">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Click Timer" type="number" class="example-right-align" [(ngModel)]="clicktimer">
+        </mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-checkbox [(ngModel)]="isClick" (change)="onChange($event, isClick)">Click Present or not!</mat-checkbox>
+        <!-- </mat-form-field> -->
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="w-100" (click)="onNewTask()">INSERT</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

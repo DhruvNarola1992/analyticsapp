@@ -1,0 +1,89 @@
+<div fxFlex="100" fxFlex.gt-xs="95%" fxFlex.gt-sm="800px">
+        <form [formGroup]="form" fxFlex.gt-xs="100" class="mb15">
+            <h4 mat-dialog-title> User Details </h4>
+            <mat-dialog-content class="">
+                    <div class="example-container">
+                            <mat-form-field>
+                                <input matInput placeholder="Name" type="text" formControlName="name">
+                            </mat-form-field> 
+                            <mat-form-field>
+                                    <input matInput placeholder="Mobile No" type="text" formControlName="mobileNo">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Refer Code" type="text" formControlName="referCode">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Reference" type="text" formControlName="reference">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Unique Id" type="text" formControlName="uniqueId">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Coin" type="number" class="example-right-align" formControlName="coin">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Amount" type="number" class="example-right-align" formControlName="amount">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Total Coin" type="number" class="example-right-align" formControlName="totalcoin">
+                            </mat-form-field>
+                            
+                            <mat-form-field>
+                                    <input matInput placeholder="Impression Coin" type="number" class="example-right-align" formControlName="coinimpression">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Click Coin" type="number" class="example-right-align" formControlName="coinclick">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Scratch Coin" type="number" class="example-right-align" formControlName="coinscratch">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Spin Coin" type="number" class="example-right-align" formControlName="coinspin">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Reference Coin" type="number" class="example-right-align" formControlName="coinreference">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Game Coin" type="number" class="example-right-align" formControlName="coinplaygame">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Refer Coin" type="number" class="example-right-align" formControlName="getreferCoin">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Total Impression" type="number" class="example-right-align" formControlName="totalimpression">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Total Click" type="number" class="example-right-align" formControlName="totalclick">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Success Impression" type="number" class="example-right-align" formControlName="successimpression">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Fail Impression" type="number" class="example-right-align" formControlName="failimpression">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Success Click" type="number" class="example-right-align" formControlName="successclick">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Fail Click" type="number" class="example-right-align" formControlName="failclick">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Count Scratch" type="number" class="example-right-align" formControlName="scratchcount">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Count Spin" type="number" class="example-right-align" formControlName="spincount">
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput placeholder="Game Count" type="number" class="example-right-align" formControlName="gamecount">
+                            </mat-form-field>
+                            <mat-checkbox formControlName="isActive">Active or block!</mat-checkbox>
+                            <mat-checkbox formControlName="isFirstWithdraw">First payment done or not!</mat-checkbox>
+                </div>
+            </mat-dialog-content>
+            <mat-dialog-actions>
+                <button mat-raised-button type="button" color="warn" (click)="dialogRef.close()">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-dialog-actions>
+        </form>
+    </div>
